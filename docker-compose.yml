@@ -1,7 +1,0 @@
-services:
-  discord-bot:
-    build: .
-    container_name: anti-grito
-    restart: always 
-    env_file:
-      - .env
