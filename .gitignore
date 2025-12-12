@@ -1,0 +1,10 @@
+# Arquivos de ambiente (SEGREDOS)
+.env
+
+# Lixo do Python
+__pycache__/
+*.pyc
+
+# Ambiente virtual (se você usar venv)
+venv/
+.venv/

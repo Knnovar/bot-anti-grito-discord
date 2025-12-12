@@ -1,0 +1,5 @@
+discord.py
+discord-ext-voice-recv
+audioop-lts
+PyNaCl
+python-dotenv
