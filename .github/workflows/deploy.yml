@@ -30,8 +30,7 @@ jobs:
       # 6. Move o ZIP para o deploy
       - name: Move app.zip
         run: | 
-          mkdir -p deploy
-          mv app.zip deploy/
+          mv app.zip .github/scripts/
 
       # 7. Executa o deploy
       - name: Run Square Cloud deployment
@@ -52,6 +51,7 @@ jobs:
         env:
           SQUARE_API_KEY: ${{ secrets.SQUARE_API_KEY }}
           API_ID_KEY: ${{ secrets.API_ID_KEY }}
+
 
 
 
