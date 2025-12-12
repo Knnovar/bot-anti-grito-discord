@@ -24,7 +24,6 @@ jobs:
       # 5. Instala dependências globais
       - name: Install global dependencies
         run: |
-          cd global-scripts
           npm install
           npm list @squarecloud/api
 
@@ -61,6 +60,7 @@ jobs:
         env:
           SQUARE_API_KEY: ${{ secrets.SQUARE_API_KEY }}
           API_ID_KEY: ${{ secrets.API_ID_KEY }}
+
 
 
 
