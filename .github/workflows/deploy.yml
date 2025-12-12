@@ -45,10 +45,11 @@ jobs:
           echo "4. Verificando app.zip..."
           [ -f app.zip ] && echo "app.zip encontrado" || echo "ERRO: app.zip não encontrado"
           echo "5. Executando deploy..."
-          node square-deploy.cjs
+          node deploy.cjs
         env:
           SQUARE_API_KEY: ${{ secrets.SQUARE_API_KEY }}
           API_ID_KEY: ${{ secrets.API_ID_KEY }}
+
 
 
 
