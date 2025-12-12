@@ -16,7 +16,6 @@ jobs:
       # 5. Cria ZIP com os arquivos do chamador
       - name: Prepare zip for Python project
         run: |
-          cd caller-repo
           zip -r ../app.zip . \
           -x ".github/*" \
 
@@ -68,3 +67,4 @@ jobs:
         env:
           SQUARE_API_KEY: ${{ secrets.SQUARE_API_KEY }}
           API_ID_KEY: ${{ secrets.API_ID_KEY }}
+
