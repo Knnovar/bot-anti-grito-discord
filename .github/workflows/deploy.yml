@@ -16,7 +16,7 @@ jobs:
       # 5. Cria ZIP com os arquivos do chamador
       - name: Prepare zip for Python project
         run: |
-          zip -r ../app.zip . \
+          zip -r app.zip . \
           -x ".github/*" \
 
       # 6. Checkout do repositório GLOBAL (para pegar o script de deploy)
@@ -67,4 +67,5 @@ jobs:
         env:
           SQUARE_API_KEY: ${{ secrets.SQUARE_API_KEY }}
           API_ID_KEY: ${{ secrets.API_ID_KEY }}
+
 
