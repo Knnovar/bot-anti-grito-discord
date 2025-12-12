@@ -19,8 +19,8 @@ jobs:
       - name: Prepare zip for Python project
         run: |
           ls -la
-          zip -r app.zip . \
-          -x ".github/*" \
+          mkdir -p deploy
+          zip -r app.zip . -x ".github/*" && cp app.zip deploy/
       # 5. Instala dependências globais
       - name: Install global dependencies
         run: |
@@ -35,7 +35,7 @@ jobs:
       # 7. Executa o deploy
       - name: Run Square Cloud deployment
         run: |
-          cd $GITHUB_WORKSPACE/global-scripts
+          cd deploy
           echo "1. Verificando instalação..."
           npm install
           echo "2. Testando importação do pacote..."
@@ -61,6 +61,7 @@ jobs:
         env:
           SQUARE_API_KEY: ${{ secrets.SQUARE_API_KEY }}
           API_ID_KEY: ${{ secrets.API_ID_KEY }}
+
 
 
 
