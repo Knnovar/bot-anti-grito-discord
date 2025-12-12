@@ -15,22 +15,24 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
-      # 5. Cria ZIP com os arquivos do chamador
+      # 5. Cria ZIP com os arquivos
       - name: Prepare zip for Python project
         run: |
           ls -la
           mkdir -p deploy
-          zip -r app.zip . -x ".github/*" && cp app.zip deploy/
-      # 5. Instala dependências globais
+          zip -r app.zip . -x ".github/*"
+      # 5. Instala dependências
       - name: Install global dependencies
         run: |
           cd .github/scripts
           npm install
           npm list @squarecloud/api
 
-      # 6. Move o ZIP para o global-scripts
+      # 6. Move o ZIP para o deploy
       - name: Move app.zip
-        run: mv app.zip global-scripts/
+        run: | 
+          mkdir -p deploy
+          mv app.zip deploy/
 
       # 7. Executa o deploy
       - name: Run Square Cloud deployment
@@ -61,6 +63,7 @@ jobs:
         env:
           SQUARE_API_KEY: ${{ secrets.SQUARE_API_KEY }}
           API_ID_KEY: ${{ secrets.API_ID_KEY }}
+
 
 
 
