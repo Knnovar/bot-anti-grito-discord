@@ -42,8 +42,6 @@ jobs:
           npm run test
           echo "3. Procurando app.zip..."
           find . -name "app.zip" -exec ls -lh {} \; 
-          exit 1
-          fi
           echo "4. Verificando app.zip..."
           [ -f app.zip ] && echo "app.zip encontrado" || echo "ERRO: app.zip não encontrado"
           echo "5. Executando deploy..."
@@ -51,6 +49,7 @@ jobs:
         env:
           SQUARE_API_KEY: ${{ secrets.SQUARE_API_KEY }}
           API_ID_KEY: ${{ secrets.API_ID_KEY }}
+
 
 
 
