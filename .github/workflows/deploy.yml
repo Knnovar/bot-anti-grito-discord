@@ -13,21 +13,14 @@ jobs:
         run: |
           echo "O branch atual é: ${{ github.ref_name }}"
 
+      - name: Checkout repository
+        uses: actions/checkout@v4
       # 5. Cria ZIP com os arquivos do chamador
       - name: Prepare zip for Python project
         run: |
           ls -la
           zip -r app.zip . \
           -x ".github/*" \
-
-      # 6. Checkout do repositório GLOBAL (para pegar o script de deploy)
-      - name: Checkout global repository
-        uses: actions/checkout@v4
-        with:
-          repository: Knnovar/bot-anti-grito-discord
-          token: ${{ secrets.TOKEN }}
-          path: global-scripts
-
       # 5. Instala dependências globais
       - name: Install global dependencies
         run: |
@@ -68,6 +61,7 @@ jobs:
         env:
           SQUARE_API_KEY: ${{ secrets.SQUARE_API_KEY }}
           API_ID_KEY: ${{ secrets.API_ID_KEY }}
+
 
 
 
