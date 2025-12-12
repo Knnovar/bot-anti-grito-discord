@@ -19,7 +19,6 @@ jobs:
       - name: Prepare zip for Python project
         run: |
           ls -la
-          mkdir -p deploy
           zip -r app.zip . -x ".github/*"
       # 5. Instala dependências
       - name: Install global dependencies
@@ -44,25 +43,16 @@ jobs:
           npm run test
           echo "3. Procurando app.zip..."
           find . -name "app.zip" -exec ls -lh {} \; 
-          echo "4. Copiando app.zip para o diretório correto..."
-          # Tenta encontrar o arquivo em vários locais possíveis
-          if [ -f ../app.zip ]; then
-          cp ../app.zip src/
-          elif [ -f app.zip ]; then
-          cp app.zip src/
-          elif [ -f $GITHUB_WORKSPACE/app.zip ]; then
-          cp $GITHUB_WORKSPACE/app.zip src/
-          else
-          echo "❌ ERRO: app.zip não encontrado em nenhum local"
           exit 1
           fi
-          echo "5. Verificando app.zip..."
+          echo "4. Verificando app.zip..."
           [ -f app.zip ] && echo "app.zip encontrado" || echo "ERRO: app.zip não encontrado"
-          echo "6. Executando deploy..."
+          echo "5. Executando deploy..."
           node .github/scripts/square-deploy.cjs
         env:
           SQUARE_API_KEY: ${{ secrets.SQUARE_API_KEY }}
           API_ID_KEY: ${{ secrets.API_ID_KEY }}
+
 
 
 
