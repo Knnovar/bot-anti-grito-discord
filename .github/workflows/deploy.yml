@@ -36,7 +36,7 @@ jobs:
       # 7. Executa o deploy
       - name: Run Square Cloud deployment
         run: |
-          cd deploy
+          cd .github/scripts
           echo "1. Verificando instalação..."
           npm install
           echo "2. Testando importação do pacote..."
@@ -52,6 +52,7 @@ jobs:
         env:
           SQUARE_API_KEY: ${{ secrets.SQUARE_API_KEY }}
           API_ID_KEY: ${{ secrets.API_ID_KEY }}
+
 
 
 
